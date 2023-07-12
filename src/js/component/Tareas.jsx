@@ -10,10 +10,20 @@ export const ListaTareas = () => {
 
     const handleKeyDown = (e) => {
         if (e.keyCode === 13) {
-          setTareasGuardadas([...tareasGuardadas, inputValue]);
+          const nuevaTarea = {
+            id: Date.now(), 
+            tarea: inputValue,
+          };
+          setTareasGuardadas([...tareasGuardadas, nuevaTarea]);
           setInputValue('');
         }
-      };
+        };
+
+        
+        const handleEliminarTarea = (id) => {
+            const nuevasTareas = tareasGuardadas.filter((tarea) => tarea.id !== id);
+            setTareasGuardadas(nuevasTareas);
+          };
 
 
     return (
@@ -24,12 +34,21 @@ export const ListaTareas = () => {
             <div className="input-group input-group-lg">
                   <input type="text" onKeyDown={handleKeyDown} onChange={e=>setInputValue(e.target.value)} value={inputValue} className="form-control" placeholder="Añade una tarea"  aria-describedby="inputGroup-sizing-lg"/>
             </div>
-            <ul className="list-group">
-                {tareasGuardadas.map((tarea, index) => (
-                    <li className="list-group-item text-muted" key={index}>
-                         {tarea}
+            <ul className="list-group listaTarea">
+                {tareasGuardadas.map((tarea) => (
+                    <li className="list-group-item text-muted" key={tarea.id}>
+                         {tarea.tarea}
+                         <button className="eliminarTarea" onClick={() => handleEliminarTarea(tarea.id)}>x</button>
                     </li>
+                   
                 ))}
+                <li className= "list-group text-muted contadorDeTareas">
+                    <div className="contadorDeTareasContent">
+                    {tareasGuardadas.length} tareas a realizar
+                    </div>
+                </li>
+                    
+          
             </ul>
 
 
