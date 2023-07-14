@@ -30,3 +30,16 @@
     display: inline-block; 
   }
   
+  .header {
+    background-color: goldenrod;
+  }
+
+ #Tareas{
+  background-color: bisque;
+ }
+ .contadorDeTareasContent{
+  background-color: darkslategrey;
+  display: inline-flex;
+  padding-left: 4px;
+  border-radius: 4px;
+}
