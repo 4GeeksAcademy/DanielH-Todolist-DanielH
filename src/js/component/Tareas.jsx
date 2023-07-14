@@ -14,17 +14,22 @@ export const ListaTareas = () => {
             id: Date.now(), 
             tarea: inputValue,
           };
+          if (inputValue === "") {
+            return alert ("Las tareas no puedes estar vacias!!!")
+          }
           setTareasGuardadas([...tareasGuardadas, nuevaTarea]);
           setInputValue('');
         }
         };
 
         
-        const handleEliminarTarea = (id) => {
-            const nuevasTareas = tareasGuardadas.filter((tarea) => tarea.id !== id);
+        const handleEliminarTarea = (tareaEliminar) => {
+            const nuevasTareas = tareasGuardadas.filter((tarea) => tarea.tarea !== tareaEliminar.tarea
+            );
             setTareasGuardadas(nuevasTareas);
           };
 
+     
 
     return (
     <div className="container" id="Tareas">
@@ -36,15 +41,16 @@ export const ListaTareas = () => {
             </div>
             <ul className="list-group listaTarea">
                 {tareasGuardadas.map((tarea) => (
-                    <li className="list-group-item text-muted" key={tarea.id}>
+                    <li className="list-group-item text-muted" key={tarea}>
                          {tarea.tarea}
-                         <button className="eliminarTarea" onClick={() => handleEliminarTarea(tarea.id)}>x</button>
+                         <button className="eliminarTarea" onClick={() => handleEliminarTarea(tarea)}>x</button>
                     </li>
                    
                 ))}
                 <li className= "list-group text-muted contadorDeTareas">
                     <div className="contadorDeTareasContent">
-                    {tareasGuardadas.length} tareas a realizar
+                    {tareasGuardadas.length === 0 ? ("No hay tareas por realizar") :(tareasGuardadas.length +''+ ' tareas a realizar')                     
+                    }  
                     </div>
                 </li>
                     

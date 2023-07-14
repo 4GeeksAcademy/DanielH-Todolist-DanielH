@@ -24,6 +24,7 @@
 
 .eliminarTarea {
     display: none; 
+
   }
   
   .list-group-item:hover .eliminarTarea {
@@ -32,14 +33,35 @@
   
   .header {
     background-color: goldenrod;
+    box-shadow: 4px 2px 4px rgba(0, 0, 0, 0.2);
+    
   }
 
  #Tareas{
   background-color: bisque;
+  box-shadow: 4px 2px 4px rgba(0, 0, 0, 0.2);
+  margin-bottom: 350px;
  }
  .contadorDeTareasContent{
   background-color: darkslategrey;
   display: inline-flex;
   padding-left: 4px;
   border-radius: 4px;
+  box-shadow: 4px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.contadorDeTareas{
+  margin-bottom: 4px;
+  margin-top: 4px;
+}
+
+
+.tarea-item:hover {
+  text-decoration: line-through;
+  color: red;
+  cursor: pointer;
+}
+
+.ulForm{
+  list-style-type: none;
 }
